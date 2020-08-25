@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Music from './music';
+import Pokemon from './pokemon';
 
 export interface Search {
     artist: string;
@@ -7,36 +7,20 @@ export interface Search {
     track: string;
 };
 
-const initSearch: Search = {
-    artist: 'Pink Floyd',
-    album: 'A saucerful of secrets',
-    track: '',
-}
-
 const Form = () => {
-    const [artist, setArtist] = useState('');
-    const [album, setAlbum] = useState('');
-    const [track, setTrack] = useState('');
-    const [search, setSearch] = useState(initSearch);
+    const [input, setInput] = useState('');
+    const [search, setSearch] = useState('pikachu');
 
     const getSearch = () => {
-        setSearch({
-            artist,
-            album,
-            track
-        });
-        setArtist('');
-        setAlbum('');
-        setTrack('');
+        setSearch(input);
+        setInput('');
     };
     
     return (
         <form>
-            <input type="text" onChange={e => setArtist(e.target.value)} />
-            <input type="text" onChange={e => setAlbum(e.target.value)} />
-            <input type="text" onChange={e => setTrack(e.target.value)} />
-            <input type="button" onClick={getSearch} />
-            <Music search={search} />
+            <input type="text" onChange={e => setInput(e.target.value)} />
+            <input type="button" onClick={getSearch} value="Search" />
+            <Pokemon search={search} />
         </form>
     )
 };
