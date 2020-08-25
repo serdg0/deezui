@@ -7,7 +7,8 @@ const Music = (props: {search: Search}) => {
     const {search: {artist, album, track}} = props;
 
     useEffect(() => {
-        const url = `https://api.deezer.com/search?q=artist:"${artist}"`
+        const url = `https://api.deezer.com/search?q=artist:"${artist}"`;
+        //console.log();
         axios.get(url)
         .then(response => {
             console.log(response);
